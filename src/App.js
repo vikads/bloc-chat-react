@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
-import { RoomList } from './components/RoomList.js'
+import { RoomList } from './components/RoomList.js';
+import { MessageList} from './components/MessageList.js'
 
 var config = {
   apiKey: "AIzaSyAA3xgPKeueqLMr35h0A356kdx-upD7pWQ",
@@ -20,6 +21,7 @@ class App extends Component {
      <div className="App">
        <h1 className="hero-title">Bloc Chat</h1>
        <RoomList firebase={ firebase } />
+       <MessageList firebase={ firebase } />
      </div>
 
 
