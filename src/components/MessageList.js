@@ -32,7 +32,7 @@ export class MessageList extends Component {
 
   createMessage(e) {
     e.preventDefault();
-    if (!this.state.content) { return }//
+    //if (!this.state.content) { return }//
     this.messagesRef.push({
       username: this.state.username,
       content: this.state.content,
@@ -58,7 +58,7 @@ export class MessageList extends Component {
 
   render () {
 
-    const activeRoom=this.props.activeRoom;
+    const activeRoom = this.props.activeRoom;
 
     return (
       <div>
@@ -70,7 +70,7 @@ export class MessageList extends Component {
           return null;
         }
 
-        )}
+      )}
 
 
         <form onSubmit={ (e) => this.createMessage(e) }>
