@@ -72,7 +72,6 @@ export class MessageList extends Component {
         if (message.roomId === activeRoom) {
           return <li key={message.key}>{message.content}</li>
         }
-        return null;
       })}
 
       </div>
