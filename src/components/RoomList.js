@@ -49,9 +49,11 @@ export class RoomList extends Component {
 
       <div>
 
+
           {this.state.rooms.map((room)  =>
           <li key={room.key} onClick={(e) => this.selectRoom(room, e)}>{room.name}</li>)}
 
+      
           <form onSubmit={ (e) => this.createRoom(e) }>
               <input type="text" value={this.state.name} placeholder="New Room Name" onChange={ (e) => this.handleChange(e)} />
               <input type="submit" value="Create" />
