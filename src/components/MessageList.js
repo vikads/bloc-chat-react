@@ -56,29 +56,38 @@ export class MessageList extends Component {
     });
   }
 
-  render () {
 
-    const activeRoom = this.props.activeRoom;
+    render () {
 
-    return (
-      <div>
+   const activeRoom = this.props.activeRoom;
 
-      <form onSubmit={ (e) => this.createMessage(e) }>
-        <input type="text" value={this.state.content} placeholder="Enter Message" onChange={this.handleChange} />
-        <input type="submit" value="Send" />
-      </form>
+   return (
+     <div>
 
-      {this.state.messages.map((message) => {
-        if (message.roomId === activeRoom) {
-          return <li key={message.key}>{message.content}</li>
-        }
-        return null;
-      })}
+       <form onSubmit={ (e) => this.createMessage(e) }>
+         <input type="text" value={this.state.content} placeholder="Enter Message" onChange={this.handleChange} />
+         <input type="submit" value="Send" />
+       </form>
 
-      </div>
-    );
+
+       {this.state.messages.map((message) => {
+         if (message.roomId === activeRoom) {
+           return <li key={message.key}>{message.content}</li>
+         }
+         return null;
+       }
+
+     )}
+
+
+
+
+     </div>
+   );
+
+ }
 
   }
-}
+
 
 export default MessageList;
