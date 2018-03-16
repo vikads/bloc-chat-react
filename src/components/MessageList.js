@@ -60,6 +60,12 @@ export class MessageList extends Component {
 
     const activeRoom = this.props.activeRoom;
 
+    const messageList = this.state.messages
+      .filter(message => message.roomId === activeRoom)
+      .map(message => {
+        return <li key={message.key}>{message.content}</li>
+      })
+
     return (
       <div>
 
@@ -68,11 +74,9 @@ export class MessageList extends Component {
         <input type="submit" value="Send" />
       </form>
 
-      {this.state.messages.map((message) => {
-        if (message.roomId === activeRoom) {
-          return <li key={message.key}>{message.content}</li>
-        }
-      })}
+      <ul>{messageList}</ul>
+
+
 
       </div>
     );
