@@ -40,10 +40,10 @@ export class User extends Component {
       <div>
         <h3>Welcome, {this.props.greetings}</h3>
         { this.props.greetings === "Guest" ?
-        <button onClick={this.signIn}>Sign In</button>
-        :
-        <button onClick={this.signOut}>Sign Out</button>
-      }
+          <button onClick={this.signIn}>Sign In</button>
+          :
+          <button onClick={this.signOut}>Sign Out</button>
+        }
       </div>
     )
   }
