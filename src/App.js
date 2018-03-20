@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
 import { RoomList } from './components/RoomList.js';
-import { MessageList} from './components/MessageList.js'
+import { MessageList} from './components/MessageList.js';
+import { User } from './components/User.js'
 
 var config = {
   apiKey: "AIzaSyAA3xgPKeueqLMr35h0A356kdx-upD7pWQ",
