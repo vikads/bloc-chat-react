@@ -30,6 +30,8 @@ export class MessageList extends Component {
 
   }
 
+
+
   createMessage(e) {
     e.preventDefault();
     //if (!this.state.content) { return }//
@@ -63,7 +65,10 @@ export class MessageList extends Component {
     const messageList = this.state.messages
       .filter(message => message.roomId === activeRoom)
       .map(message => {
-        return <li key={message.key}>{message.username}: {message.content}</li>
+        return <li key={message.key}>
+        {message.username}: {message.content}
+        {/*{message.sentAt} */}
+        </li>
       })
 
     return (

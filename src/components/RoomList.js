@@ -30,6 +30,17 @@ export class RoomList extends Component {
      this.setState({ name: "" });
    }
 
+   deleteRoom(roomKey) {
+     console.log('trying to delete room with room.key:',roomKey)
+     const room = this.props.firebase.database().ref('rooms/' + roomKey);
+     room.remove()
+     const remainRoom= this.state.rooms
+       .filter(room => room.key !== roomKey);
+
+       this.setState({ rooms: remainRoom });
+       //console.log('this.state:' , this.state);
+   }
+
 
     componentDidMount() {
       this.roomsRef.on('child_added', snapshot => {
@@ -39,6 +50,9 @@ export class RoomList extends Component {
       });
     }
 
+
+
+
     selectRoom(room) {
       this.props.activeRoom(room);
     }
@@ -47,7 +61,10 @@ export class RoomList extends Component {
   render () {
 
     const roomList = this.state.rooms.map((room)  =>
-      <li key={room.key} onClick={(e) => this.selectRoom(room, e)}>{room.name}</li>);
+      <li key={room.key} >
+      <span onClick={(e) => this.selectRoom(room, e)}>{room.name}</span>
+      <button id="deleteRoomButton" onClick={() => this.deleteRoom(room.key)}>Delete</button>
+      </li>);
 
     return (
 
