@@ -50,6 +50,16 @@ export class MessageList extends Component {
   });
   }
 
+  deleteMessage(messageKey) {
+    console.log('trying to delete message', messageKey)
+    const message = this.props.firebase.database().ref('messages' + messageKey);
+    //this.messagesRef.child(message).remove();
+    message.remove()
+    const remainMessages= this.state.messages
+      .filter(message => message.key !== messageKey);
+      this.setState({ messages: remainMessages});
+  }
+
   componentDidMount() {
     this.messagesRef.on('child_added', snapshot => {
       const message = snapshot.val();
@@ -68,6 +78,7 @@ export class MessageList extends Component {
         return <li key={message.key}>
         {message.username}: {message.content}
         {/*{message.sentAt} */}
+        <button id="deleteMessageButton" onClick={() => this.deleteMessage(message.key)}>Remove</button>
         </li>
       })
 
