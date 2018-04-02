@@ -51,7 +51,7 @@ export class MessageList extends Component {
 
   deleteMessage(messageKey) {
     //console.log('trying to delete message', messageKey)
-    const message = this.props.firebase.database().ref('messages' + messageKey);
+    const message = this.props.firebase.database().ref('messages/' + messageKey);
     message.remove()
     const remainMessages= this.state.messages
       .filter(message => message.key !== messageKey);
@@ -76,7 +76,7 @@ export class MessageList extends Component {
       .filter(message => message.roomId === activeRoom)
       .map(message => {
         return <li key={message.key}>
-        {message.username}: {message.content}{''}
+        {message.username}: {message.content}{' '}
         {moment(message.sentAt).format('ll')}
 
         <button id="deleteMessageButton" onClick={() => this.deleteMessage(message.key)}>Remove</button>
